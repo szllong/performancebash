@@ -1,10 +1,10 @@
 usage()
 {
-	echo  filename blocksize numjobs;
+	echo  filename blocksize numjobs directflag;
 }
 
 
-if (($# != 3))
+if (($# != 4))
 then
 	usage
 	exit 1;
@@ -12,4 +12,5 @@ fi
 filename=$1
 blocksize=$2
 numjobs=$3
-fio -filename=$filename -iodepth 1 -thread -rw=write -bs=$2 -size=1G -numjobs=$numjobs -name=test
+directflag=$4
+fio -filename=$filename -iodepth 1 --direct=$directflag -thread -rw=write -bs=$blocksize -size=10G -numjobs=$numjobs -name=test
