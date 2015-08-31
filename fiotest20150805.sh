@@ -13,4 +13,4 @@ filename=$1
 blocksize=$2
 numjobs=$3
 directflag=$4
-fio -filename=$filename -iodepth 1 --direct=$directflag -thread -rw=write -bs=$blocksize -size=10G -numjobs=$numjobs -name=test
+fio -filename=$filename -iodepth=1 --direct=$directflag -thread -rw=write -bs=$blocksize -size=10G -numjobs=$numjobs -name=test -runtime=600 -group_reporting
